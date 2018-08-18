@@ -8,8 +8,10 @@ public class MenuPrincipal {
     
     public static String [] usuarios; //declaracion de un vector llamado usuarios
     public static int contadorNum; // variable que captura el numero entero ingresado por el usuario
-    public static String caracteresNum;
+    //public static String caracteresNum;
     public static int numeroElecto;
+    public static int numMayor, numMenor, numMedio;
+    public static int a ,b,c; // variables que almacenaran los numeros para la opcion de mayor a menor en el menu
     
     
     
@@ -45,6 +47,7 @@ public class MenuPrincipal {
             break;
             
             case 3:
+                MenuPrincipal.mayorMenor();
             break;
             
             case 4:
@@ -185,7 +188,7 @@ public class MenuPrincipal {
         Scanner menu = new Scanner(System.in);  //se instancia un onjeto de tipo scanner para poder capturar la opcion que desea el usuario
         
     
-        System.out.println("CONTADOR DE DIGITOS");
+        System.out.println("-----------CONTADOR DE DIGITOS----------------------");
         System.out.println("1. Ingresar numero");
         System.out.println("2. Ingresar numero a buscar");
         System.out.println("3. mostrar numero de digitos");
@@ -351,6 +354,87 @@ public class MenuPrincipal {
     //......................................................................................................................................
     //......................................................................................................................................
   
+    public static void mayorMenor(){
+        
+        int opcion; //variable para capturar la opcion del usuario 
+        Scanner leer = new Scanner(System.in);
+        
+        System.out.println("----------TRES_NUMEROS_DE_MAYOR_A_MENOR-------------");
+        System.out.println("1. Ingresar Numeros");
+        System.out.println("2. Mostrar ordenados");
+        System.out.println("3. Menu principal");
+        opcion = leer.nextInt();
+        leer.nextLine();
+        
+        switch (opcion){
+            case 1:
+                System.out.println("Ingrese el primer numero: "); // guardado de los tres numeros en variables locales
+                a = leer.nextInt();
+                leer.nextLine(); // limpia el buffer
+
+                System.out.println("Ingrese el segundo numero: ");
+                b = leer.nextInt();
+                leer.nextLine(); // limpia el buffer
+
+                System.out.println("Ingrese el tercer numero: ");
+                c = leer.nextInt();
+                leer.nextLine(); // limpia el buffer
+                
+                System.out.println("Numeros Guardados");
+                MenuPrincipal.mayorMenor();
+                
+                break;
+            case 2:
+
+                if (a > b && a > c) { // if anidados que encuentran el numero mayor
+                    numMayor = a; // se guarda a en la variable numero mayor
+                } else if (b > a && b > c){
+                    numMayor = b;    // se guarda a en la variable numero mayor
+                } else if (c > a && c > b){
+                    numMayor = c;    // se guarda a en la variable numero mayor
+                }
+                
+                
+                if (a < b && a < c) { // if anidados que encuentran el numero menor
+                    numMenor = a; // se guarda a en la variable numero menor
+                } else if (b < a && b < c){
+                    numMenor = b;    // se guarda a en la variable numero menor
+                } else if (c < a && c < b){
+                    numMenor = c;    // se guarda a en la variable numero menor
+                }
+                
+                
+                
+                if (a < numMayor && a > numMenor) { // if anidados que encuentra el numero medio
+                    numMedio = a; // se guarda a en la variable numero medio
+                } else if (b < numMayor && b > numMenor) {
+                    numMedio = b; // se guarda a en la variable numero medio
+                } else if (c < numMayor && c > numMenor) {
+                    numMedio = c; // se guarda a en la variable numero medio
+                } else {
+                    System.out.println("Los numeros son iguales");
+                }
+                System.out.println("el mayor: "+numMayor); // se imprime en pantalla los tres numeros ordenados
+                System.out.println("el medio: "+numMedio);
+                System.out.println("el menor: "+numMenor);
+
+                MenuPrincipal.mayorMenor();
+                
+                break;
+            case 3:
+                MenuPrincipal.menuprincipal();
+                break;
+            default:
+                System.out.println("Opcion no valida, intente otra vez");
+                MenuPrincipal.mayorMenor();
+                break;
+        }
+    }
+    
+    //......................................................................................................................................
+    //......................................................................................................................................
+  
+    
     public static void main(String[] args) { //metodo principal donde inicia la ejecucion de todo programa en JAVA
         
         MenuPrincipal.menuprincipal(); //llamada al metodo que contiene al menu principal
