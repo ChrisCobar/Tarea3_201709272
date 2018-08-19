@@ -12,6 +12,7 @@ public class MenuPrincipal {
     public static int numeroElecto;
     public static int numMayor, numMenor, numMedio;
     public static int a ,b,c; // variables que almacenaran los numeros para la opcion de mayor a menor en el menu
+    public static int matrizAlumnos [][] = new int [6][6]; // matriz en la que se guardaran las notas de los alumnos
     
     
     
@@ -51,6 +52,7 @@ public class MenuPrincipal {
             break;
             
             case 4:
+                MenuPrincipal.promedioAlumnos();
             break;
             
             case 5:
@@ -429,6 +431,151 @@ public class MenuPrincipal {
                 MenuPrincipal.mayorMenor();
                 break;
         }
+    }
+    
+    //......................................................................................................................................
+    //......................................................................................................................................
+    
+    public static void promedioAlumnos(){ // metodo de la clase al que se accede al seleccionar la opcion 4
+        String titulos [] = {"Id","Nota 1","Nota 2","Nota 3","Nota 4","Promedio"}; // titulos de la tabla donde se mostraran los datos
+        Scanner notas = new Scanner(System.in);
+        int opcion; //para evaluar el switch
+        int fila; // para poder recorrer las filas de la matriz
+        int columna; // para poder recorrer las columnas de la matriz
+        
+        System.out.println("---------------PROMEDIO-DE-ALUMNOS------------------"); // menu que se le muestra al usuario con tres opciones
+        System.out.println("1. Regristar Notas");
+        System.out.println("2. Mostrar Notas");
+        System.out.println("3. Menu Principal");
+        opcion = notas.nextInt();
+        System.out.println("----------------------------------------------------");
+    
+        switch(opcion){ 
+            case 1:
+                    MenuPrincipal.ingresoNotas(); // metodo que sirve para ingresar notas
+                
+                break;
+            case 2:
+                
+                for (int i = 0; i < titulos.length; i++) { // bucle que imprime los encabezados de la matriz de notas
+                    System.out.print("\t"+titulos[i]+" ");     
+                }
+                System.out.println(""); // salto de linea que sirve para separar los encabezados
+                
+                for(fila = 0; fila<matrizAlumnos.length; fila++){ // bucle que recorre las filas de a matrizAlumnos
+             
+                    for(columna = 0; columna<matrizAlumnos.length; columna++){ // bucle que recorre las columnas de la matrizAlumnos
+                    System.out.print("\t"+matrizAlumnos[fila][columna]+" "); // imprimir en pantalla fila y columnas
+                
+                    }
+                System.out.println(""); // separacion de fila
+                }
+                
+                System.out.println("----------------------------------------------------");
+                MenuPrincipal.promedioAlumnos(); // llamada al metodo para regresar al sub-menu
+                
+                break;
+            case 3:
+                MenuPrincipal.menuprincipal(); // llamada al menu principal
+                break;   
+            default:
+                System.out.println("Opcion no valida, intente nuevamente...");
+                MenuPrincipal.promedioAlumnos();
+        
+        }
+    }
+    
+    
+    //......................................................................................................................................
+    //......................................................................................................................................
+  
+    public static void ingresoNotas(){
+        int id=1; // variable que identifica que numero de alumno es 
+        int nota1 = 0,nota2 = 0,nota3 = 0,nota4 = 0,promedio = 0; // para almacenar temporalmente las notas de cada alumno
+     
+        Scanner notas = new Scanner(System.in); // para poder leer las notas de los alumnos
+
+            while(id < 7){ // bucle que me permite ingresar las notas de cada alumno
+                
+                System.out.println("----------------------------------------------------");
+                System.out.println("Alumno "+id); // bucle que se repite una vez por  alumno
+                for (int j = 1; j < 2; j++) {
+                    
+                System.out.println("Ingrese la primera nota: ");
+                nota1 = notas.nextInt();
+                notas.nextLine();
+                System.out.println("Ingrese la segunda nota: ");
+                nota2 = notas.nextInt();
+                notas.nextLine();
+                System.out.println("Ingrese la tercer nota: ");
+                nota3 = notas.nextInt();
+                notas.nextLine();
+                System.out.println("Ingrese la cuarta nota: ");
+                nota4 = notas.nextInt();
+                notas.nextLine();
+                promedio = ((nota1 + nota2 + nota3 + nota4)/4); //calculo del promedio para el alumno actual
+                
+                }
+            switch (id) { // dependiento del id del alumno, las notas y promedio se guardaran en la fila correspondiente
+                case 1:
+                    matrizAlumnos [0][0] = id;
+                    matrizAlumnos [0][1] = nota1;
+                    matrizAlumnos [0][2] = nota2;
+                    matrizAlumnos [0][3] = nota3;
+                    matrizAlumnos [0][4] = nota4;
+                    matrizAlumnos [0][5] = promedio;
+                    break;
+                case 2:
+                    matrizAlumnos [1][0] = id;
+                    matrizAlumnos [1][1] = nota1;
+                    matrizAlumnos [1][2] = nota2;
+                    matrizAlumnos [1][3] = nota3;
+                    matrizAlumnos [1][4] = nota4;
+                    matrizAlumnos [1][5] = promedio;
+                    break;
+                case 3:
+                    matrizAlumnos [2][0] = id;
+                    matrizAlumnos [2][1] = nota1;
+                    matrizAlumnos [2][2] = nota2;
+                    matrizAlumnos [2][3] = nota3;
+                    matrizAlumnos [2][4] = nota4;
+                    matrizAlumnos [2][5] = promedio;
+                    break;
+                case 4:
+                    matrizAlumnos [3][0] = id;
+                    matrizAlumnos [3][1] = nota1;
+                    matrizAlumnos [3][2] = nota2;
+                    matrizAlumnos [3][3] = nota3;
+                    matrizAlumnos [3][4] = nota4;
+                    matrizAlumnos [3][5] = promedio;
+                    break;
+                case 5:
+                    matrizAlumnos [4][0] = id;
+                    matrizAlumnos [4][1] = nota1;
+                    matrizAlumnos [4][2] = nota2;
+                    matrizAlumnos [4][3] = nota3;
+                    matrizAlumnos [4][4] = nota4;
+                    matrizAlumnos [4][5] = promedio;
+                    break;
+                case 6:
+                    matrizAlumnos [5][0] = id;
+                    matrizAlumnos [5][1] = nota1;
+                    matrizAlumnos [5][2] = nota2;
+                    matrizAlumnos [5][3] = nota3;
+                    matrizAlumnos [5][4] = nota4;
+                    matrizAlumnos [5][5] = promedio;
+                    break;
+                default:
+                    
+                    break;
+            }
+                
+                id++; // incremento que sirve para poder pasar al siguiente alumno, tambien para poder salir del while
+                
+            }
+            System.out.println("Notas guardadas exitosamente"); // mensaje que aparece al finalizar el ingreso de notas
+            MenuPrincipal.promedioAlumnos(); //retorno al menu de promedios
+        
     }
     
     //......................................................................................................................................
